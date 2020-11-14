@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -18,6 +17,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <Switch>
+        <Route path="/saved-news">{'1'}</Route>
+        <Route path="*">{'*'}</Route>
+      </Switch>
     </div>
   );
 }
