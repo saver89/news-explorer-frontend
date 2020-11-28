@@ -1,13 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import './Header.css';
 
-function Header() {
+function Header({ onLogin }) {
+  const location = useLocation();
+
   return (
-    <header className="header">
-      <Link to="/" className="header__logo">NewsExplorer</Link>
-      <Navigation></Navigation>
+    <header
+      className={`header ${
+        location.pathname === '/saved-news' ? 'header_black' : ''
+      }`}
+    >
+      <Link
+        to="/"
+        className={`header__logo ${
+          location.pathname === '/saved-news' ? 'header__logo_black' : ''
+        }`}
+      >
+        NewsExplorer
+      </Link>
+      <Navigation onLogin={onLogin}></Navigation>
     </header>
   );
 }
