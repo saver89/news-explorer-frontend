@@ -1,0 +1,216 @@
+.overlay {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgb(0, 0, 0, 0.5);
+  transition: visibility 0.5s linear, opacity 0.5s linear;
+}
+
+.overlay_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup-with-form {
+  position: relative;
+  margin: auto;
+  padding: 36px 36px 0 0;
+}
+
+.popup-with-form__close-button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+  background-image: url('../../images/close-button.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: cover;
+  border: 0;
+  cursor: pointer;
+}
+
+.popup-with-form__close-button:focus {
+  outline: none;
+}
+
+.popup-with-form__close-button:hover {
+  opacity: 0.6;
+}
+
+.popup-with-form__form {
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  width: 430px;
+  max-width: 100%;
+  height: 100%;
+  padding: 34px 36px 36px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.popup-with-form__form_type_notification {
+  padding: 43px 36px 51px;
+}
+
+.popup-with-form__title {
+  color: #1a1b22;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 28px;
+  margin: 0;
+  margin-bottom: 26px;
+  width: 100%;
+}
+
+.popup-with-form__title_type_notification {
+  margin-bottom: 14px;
+}
+
+.popup-with-form__fieldset {
+  margin: 0;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  padding: 0;
+}
+
+.popup-with-form__fieldset:last-of-type {
+  margin-bottom: 0;
+}
+
+.popup-with-form__label {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  color: #2f71e5;
+}
+
+.popup-with-form__input {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+  padding: 10px 0;
+}
+
+.popup-with-form__input:focus {
+  outline: none;
+}
+
+.popup-with-form__validation-error {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  margin-top: 4px;
+  color: #ff0000;
+}
+
+.popup-with-form__validation-error:empty:before {
+  content: '\200b';
+}
+
+.popup-with-form__bottom-text {
+  margin: 16px auto 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+  color: #000000;
+}
+
+.popup-with-form__bottom-button {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  color: #2f71e5;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.popup-with-form__bottom-button:focus {
+  outline: none;
+}
+
+.popup-with-form__submit-button {
+  margin-top: 24px;
+  height: 64px;
+  width: 100%;
+  background-color: #2f71e5;
+  color: #fff;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  border: 0;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  border-radius: 100px;
+}
+
+.popup-with-form__submit-button:focus {
+  outline: none;
+}
+
+.popup-with-form__submit-button:disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+}
+
+.popup-with-form__submit-button:hover:enabled {
+  background-color: #347eff;
+}
+
+@media screen and (max-width: 460px) {
+  .popup-with-form {
+    margin: auto 0;
+    padding: 56px 0 0 0;
+    width: 100%;
+  }
+
+  .popup-with-form__close-button {
+    width: 24px;
+    height: 24px;
+    top: 5%;
+    right: 5%;
+  }
+
+  .popup-with-form__form {
+    width: 100%;
+    padding: 5%;
+  }
+
+  .popup-with-form__title {
+    margin-bottom: 22px;
+  }
+
+  .popup-with-form__submit-button {
+    margin-top: 8px
+  }
+}
