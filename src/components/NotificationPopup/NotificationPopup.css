@@ -1,0 +1,16 @@
+.popup-with-form__notification-submit {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+  color: #2f71e5;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.popup-with-form__notification-submit:focus {
+  outline: none;
+}

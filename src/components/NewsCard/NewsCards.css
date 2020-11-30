@@ -1,0 +1,229 @@
+.news-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 16px;
+  background: #ffffff;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-card__image-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 52%;
+}
+
+.news-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.news-card__tag {
+  margin-top: 24px;
+  margin-left: 24px;
+  padding: 8px 12px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  color: #000000;
+  background: #fff;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.news-card__save-button {
+  position: relative;
+  margin-top: 24px;
+  margin-right: 24px;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../../images/bookmark.svg');
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.news-card__save-button:focus {
+  outline: none;
+}
+
+.news-card__save-button:hover {
+  background-image: url('../../images/bookmark-black.svg');
+}
+
+.news-card__save-button_marked {
+  background-image: url('../../images/bookmark-marked.svg');
+}
+
+.news-card__save-button_marked:hover {
+  background-image: url('../../images/bookmark-marked.svg');
+}
+
+.news-card__button-tooltip {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  padding: 13px 11px 15px;
+  width: 182px;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  border-radius: 10px;
+  margin-right: 5px;
+  background: #ffffff;
+  box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
+}
+
+.news-card__save-button:hover .news-card__button-tooltip {
+  visibility: visible;
+}
+
+.news-card__trash-button {
+  margin-top: 24px;
+  margin-right: 24px;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../../images/trash.svg');
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.news-card__trash-button:hover {
+  background-image: url('../../images/trash-black.svg');
+}
+
+.news-card__date {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 20px 24px 12px;
+  color: #b6bcbf;
+  display: flex;
+}
+
+.news-card__title {
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  padding: 0 24px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+.news-card__description {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 16px 24px 18px;
+  margin: 0;
+  color: #1a1b22;
+}
+
+.news-card__source {
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 24px 24px;
+  color: #b6bcbf;
+}
+
+@media screen and (max-width: 768px) {
+  .news-card__tag {
+    margin-top: 8px;
+    margin-left: 8px;
+    font-size: 12px;
+  }
+
+  .news-card__save-button {
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+
+  .news-card__trash-button {
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+
+  .news-card__date {
+    padding: 16px 16px 12px;
+  }
+
+  .news-card__title {
+    font-size: 22px;
+    line-height: 24px;
+    padding: 0 16px;
+  }
+
+  .news-card__description {
+    padding: 10px 16px 12px;
+  }
+
+  .news-card__source {
+    padding: 0 16px 16px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .news-card__tag {
+    margin-top: 16px;
+    margin-left: 16px;
+    font-size: 14px;
+  }
+
+  .news-card__save-button {
+    margin-top: 16px;
+    margin-right: 16px;
+  }
+
+  .news-card__trash-button {
+    margin-top: 16px;
+    margin-right: 16px;
+  }
+
+  .news-card__date {
+    padding: 16px 16px 10px;
+  }
+
+  .news-card__title {
+    line-height: 26px;
+    padding: 0 16px;
+  }
+
+  .news-card__description {
+    padding: 10px 16px 8px;
+  }
+}

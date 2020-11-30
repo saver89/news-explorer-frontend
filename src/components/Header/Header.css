@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+  padding: 0 min(104px, 7%);
+}
+
+.header_black {
+  box-shadow: inset 0px -1px 0px #d1d2d6;
+}
+
+.header__logo {
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  color: #fff;
+  text-decoration: none;
+  margin: auto 0;
+}
+
+.header__logo:focus {
+  outline: none;
+}
+
+.header__logo_black {
+  color: #1a1b22;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 5%;
+    height: 66px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    height: 56px;
+  }
+
+  .header__logo {
+    font-size: 16px;
+  }
+}
