@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import './Header.css';
 
-function Header({ onLogin }) {
+function Header({ onLogin, isLoggedIn, onLogout }) {
   const location = useLocation();
 
   return (
@@ -20,7 +20,7 @@ function Header({ onLogin }) {
       >
         NewsExplorer
       </Link>
-      <Navigation onLogin={onLogin}></Navigation>
+      <Navigation onLogin={onLogin} isLoggedIn={isLoggedIn} onLogout={onLogout}></Navigation>
     </header>
   );
 }
