@@ -70,7 +70,7 @@ function App() {
             setSavedCards(res.data);
           }
         })
-        .catch((err) => showError(err.message));
+        .catch((err) => showError(err.message || err));
     } else {
       setSavedCards([]);
     }
@@ -123,7 +123,7 @@ function App() {
       }
     } catch (err) {
       setShowSignUp(false);
-      showError(err.message);
+      showError(err.message || err);
     }
   }
 
@@ -137,7 +137,7 @@ function App() {
       setIsLoggedIn(true);
     } catch (err) {
       setShowSignIn(false);
-      showError(err.message);
+      showError(err.message || err);
     }
   }
 
@@ -147,7 +147,7 @@ function App() {
       history.push('/');
       setIsLoggedIn(false);
     } catch (err) {
-      showError(err.message);
+      showError(err.message || err);
     }
   }
 
@@ -171,7 +171,7 @@ function App() {
         setSavedCards(savedCards.filter((card) => card._id !== articleId));
       }
     } catch (err) {
-      showError(err.message);
+      showError(err.message || err);
     }
   }
 
