@@ -80,7 +80,7 @@
   background-image: url('../../images/bookmark-marked.svg');
 }
 
-.news-card__save-button:disabled {
+.news-card__save-button_disabled {
   background-image: url('../../images/bookmark.svg');
 }
 

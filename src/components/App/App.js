@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import SavedNews from '../SavedNews/SavedNews';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -38,6 +38,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const signInForm = useFormWithValidation();
   const signUpForm = useFormWithValidation();
+  const history = useHistory();
 
   useEffect(() => {
     if (
@@ -143,6 +144,7 @@ function App() {
   async function handleSignOut() {
     try {
       await MainApi.signOut();
+      history.push('/');
       setIsLoggedIn(false);
     } catch (err) {
       showError(err.message);
@@ -173,31 +175,56 @@ function App() {
     }
   }
 
+  function showSignInPopup() {
+    signInForm.resetForm();
+    setShowSignIn(true);
+    setShowSignUp(false);
+    setShowNotification(false);
+  }
+
+  function showSignUpPopup() {
+    signUpForm.resetForm();
+    setShowSignIn(false);
+    setShowSignUp(true);
+    setShowNotification(false);
+  }
+
+  function handleOnClose() {
+    setShowSignIn(false);
+    setShowSignUp(false);
+    setShowNotification(false);
+  }
+
+  function handleNotificationSubmit(evt) {
+    evt.preventDefault();
+    showSignUpPopup();
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
         <Switch>
-          <ProtectedRoute loggedIn={isLoggedIn} path="/saved-news">
+          <ProtectedRoute
+            loggedIn={isLoggedIn}
+            showSignInPopup={showSignInPopup}
+            path="/saved-news"
+          >
             <Header
-              onLogin={() => {
-                signUpForm.resetForm();
-                signInForm.resetForm();
-                setShowSignIn(true);
-              }}
+              onLogin={showSignInPopup}
               isLoggedIn={isLoggedIn}
               onLogout={handleSignOut}
             />
             <SavedNewsHeader savedCards={savedCards} />
-            <SavedNews savedCards={savedCards} cardSaveHandler={cardSaveHandler} cardDeleteHandler={cardDeleteHandler} />
+            <SavedNews
+              savedCards={savedCards}
+              cardSaveHandler={cardSaveHandler}
+              cardDeleteHandler={cardDeleteHandler}
+            />
           </ProtectedRoute>
           <Route exact path="/">
             <div className="header-image">
               <Header
-                onLogin={() => {
-                  signUpForm.resetForm();
-                  signInForm.resetForm();
-                  setShowSignIn(true);
-                }}
+                onLogin={showSignInPopup}
                 isLoggedIn={isLoggedIn}
                 onLogout={handleSignOut}
               />
@@ -205,7 +232,7 @@ function App() {
                 onSubmit={handleSearch}
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
-              ></SearchForm>
+              />
             </div>
             <Main
               showLoader={showLoader}
@@ -217,6 +244,7 @@ function App() {
               cardSaveHandler={cardSaveHandler}
               cardDeleteHandler={cardDeleteHandler}
               keyword={searchValue}
+              showSignInPopup={showSignInPopup}
             />
             <About />
           </Route>
@@ -224,32 +252,23 @@ function App() {
         <Footer />
         <SigninPopup
           isVisible={showSignIn}
-          onClose={() => setShowSignIn(false)}
-          onBottomClick={() => {
-            setShowSignIn(false);
-            setShowSignUp(true);
-          }}
+          onClose={handleOnClose}
+          onBottomClick={showSignUpPopup}
           onSubmit={handleSignIn}
           validateObject={signInForm}
         />
         <SignupPopup
           isVisible={showSignUp}
-          onClose={() => setShowSignUp(false)}
-          onBottomClick={() => {
-            setShowSignIn(true);
-            setShowSignUp(false);
-          }}
+          onClose={handleOnClose}
+          onBottomClick={showSignInPopup}
           onSubmit={handleSignUp}
           validateObject={signUpForm}
         />
         <NotificationPopup
           title={notificationText}
           isVisible={showNotification}
-          onClose={() => setShowNotification(false)}
-          onSubmit={(evt) => {
-            evt.preventDefault();
-            setShowNotification(false);
-          }}
+          onClose={handleOnClose}
+          onSubmit={handleNotificationSubmit}
           showSubmit={showNotificationSubmit}
         />
       </div>

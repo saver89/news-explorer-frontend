@@ -16,6 +16,7 @@ function Main({
   cardSaveHandler,
   cardDeleteHandler,
   keyword,
+  showSignInPopup
 }) {
   const [cardsEndIndex, setCardsEndIndex] = useState(3);
 
@@ -53,6 +54,7 @@ function Main({
                 onSave={cardSaveHandler}
                 onDelete={cardDeleteHandler}
                 key={card.url}
+                showSignInPopup={showSignInPopup}
               />
             );
           })}

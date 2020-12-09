@@ -1,7 +1,7 @@
 import * as Constants from './Constants';
 
 function signUp({ name, password, email }) {
-  return fetch(`${Constants.mainApiUrl}/signup`, {
+  return fetch(`${Constants.MAIN_API_URL}/signup`, {
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify({ name, password, email }),
@@ -19,7 +19,7 @@ function signUp({ name, password, email }) {
 }
 
 function signIn({ password, email }) {
-  return fetch(`${Constants.mainApiUrl}/signin`, {
+  return fetch(`${Constants.MAIN_API_URL}/signin`, {
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify({ password, email }),
@@ -37,7 +37,7 @@ function signIn({ password, email }) {
 }
 
 function signOut() {
-  return fetch(`${Constants.mainApiUrl}/signOut`, {
+  return fetch(`${Constants.MAIN_API_URL}/signOut`, {
     method: 'POST',
     credentials: 'include',
   }).then((res) => {
@@ -50,7 +50,7 @@ function signOut() {
 }
 
 function checkToken() {
-  return fetch(`${Constants.mainApiUrl}/users/me`, {
+  return fetch(`${Constants.MAIN_API_URL}/users/me`, {
     method: 'GET',
     credentials: 'include',
   }).then((res) => {
@@ -68,7 +68,7 @@ function saveArticle({ link, keyword, title, text, date, source, image }) {
     delete card.image;
   }
 
-  return fetch(`${Constants.mainApiUrl}/articles`, {
+  return fetch(`${Constants.MAIN_API_URL}/articles`, {
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify(card),
@@ -86,7 +86,7 @@ function saveArticle({ link, keyword, title, text, date, source, image }) {
 }
 
 function getArticles() {
-  return fetch(`${Constants.mainApiUrl}/articles`, {
+  return fetch(`${Constants.MAIN_API_URL}/articles`, {
     method: 'GET',
     credentials: 'include',
   }).then((res) => {
@@ -99,7 +99,7 @@ function getArticles() {
 }
 
 function deleteArticle(id) {
-  return fetch(`${Constants.mainApiUrl}/articles/${id}`, {
+  return fetch(`${Constants.MAIN_API_URL}/articles/${id}`, {
     method: 'DELETE',
     credentials: 'include',
   }).then((res) => {

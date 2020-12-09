@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './NewsCards.css';
 
-function NewsCard({ card, isSaved, onSave, onDelete }) {
+function NewsCard({ card, isSaved, onSave, onDelete, showSignInPopup }) {
   const currentUser = useContext(CurrentUserContext);
   const logedIn = currentUser._id ? true : false;
   const location = useLocation();
@@ -23,22 +23,26 @@ function NewsCard({ card, isSaved, onSave, onDelete }) {
       <button
         className={`news-card__save-button ${
           isSaved ? 'news-card__save-button_marked' : ''
-        }`}
+        }
+        ${!logedIn ? 'news-card__save-button_disabled' : ''}`}
         onClick={(evt) => {
-          !isSaved
-            ? onSave({
-                link: card.link,
-                keyword: card.keyword,
-                title: card.title,
-                text: card.description,
-                date: card.publishedAt,
-                source: card.source,
-                image: card.imageLink,
-              })
-            : onDelete(card._id);
+          if (!logedIn) {
+            showSignInPopup();
+          } else if (isSaved) {
+            onSave({
+              link: card.link,
+              keyword: card.keyword,
+              title: card.title,
+              text: card.description,
+              date: card.publishedAt,
+              source: card.source,
+              image: card.imageLink,
+            });
+          } else {
+            onDelete(card._id);
+          }
           evt.stopPropagation();
         }}
-        disabled={!logedIn}
         type="button"
         aria-label="сохранить"
       >
