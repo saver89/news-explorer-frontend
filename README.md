@@ -13,4 +13,4 @@
 - npm run deploy - Релиз проекта
 
 ### Ссылка на проект
-https://neelkim.students.nomoreparties.co/
+https://nee.students.nomoreparties.co/
