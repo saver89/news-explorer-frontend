@@ -28,7 +28,7 @@ function NewsCard({ card, isSaved, onSave, onDelete, showSignInPopup }) {
         onClick={(evt) => {
           if (!logedIn) {
             showSignInPopup();
-          } else if (isSaved) {
+          } else if (!isSaved) {
             onSave({
               link: card.link,
               keyword: card.keyword,
