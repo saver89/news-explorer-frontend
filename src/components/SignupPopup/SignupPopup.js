@@ -1,7 +1,13 @@
 import React from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-function SignupPopup({ isVisible, onClose, onBottomClick, onSubmit }) {
+function SignupPopup({
+  isVisible,
+  onClose,
+  onBottomClick,
+  onSubmit,
+  validateObject,
+}) {
   return (
     <PopupWithForm
       title="Регистрация"
@@ -23,8 +29,11 @@ function SignupPopup({ isVisible, onClose, onBottomClick, onSubmit }) {
           type="email"
           id="register-email-input"
           required
+          onChange={validateObject.handleChange}
         />
-        <span className="popup-with-form__validation-error"></span>
+        <span className="popup-with-form__validation-error">
+          {validateObject.errors['email']}
+        </span>
       </fieldset>
       <fieldset className="popup-with-form__fieldset">
         <label
@@ -40,9 +49,10 @@ function SignupPopup({ isVisible, onClose, onBottomClick, onSubmit }) {
           type="password"
           id="register-password-input"
           required
+          onChange={validateObject.handleChange}
         />
         <span className="popup-with-form__validation-error">
-          Это обязательное поле
+          {validateObject.errors['password']}
         </span>
       </fieldset>
       <fieldset className="popup-with-form__fieldset">
@@ -51,16 +61,21 @@ function SignupPopup({ isVisible, onClose, onBottomClick, onSubmit }) {
         </label>
         <input
           className="popup-with-form__input"
-          name="password"
+          name="name"
           placeholder="Введите свое имя"
           id="register-name-input"
           required
+          onChange={validateObject.handleChange}
         />
         <span className="popup-with-form__validation-error">
-          Это обязательное поле
+          {validateObject.errors['name']}
         </span>
       </fieldset>
-      <button type="submit" className="popup-with-form__submit-button">
+      <button
+        type="submit"
+        className="popup-with-form__submit-button"
+        disabled={!validateObject.isValid}
+      >
         Зарегистрироваться
       </button>
       <span className="popup-with-form__bottom-text">

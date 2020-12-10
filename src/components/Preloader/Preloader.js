@@ -1,10 +1,10 @@
 import React from 'react';
 import './Preloader.css';
 
-function Preloader({ text }) {
+function Preloader({ showIcon, text }) {
   return (
     <div className="preloader">
-      <i className="preloader__icon"></i>
+      {showIcon ? <i className="preloader__icon"></i> : null}
       <p className="preloader__text">{text}</p>
     </div>
   );

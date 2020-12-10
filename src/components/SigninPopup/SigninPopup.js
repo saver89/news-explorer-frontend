@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-function SigninPopup({ isVisible, onClose, onBottomClick, onSubmit }) {
+function SigninPopup({ isVisible, onClose, onBottomClick, onSubmit, validateObject }) {
   return (
     <PopupWithForm
       title="Вход"
@@ -20,8 +20,9 @@ function SigninPopup({ isVisible, onClose, onBottomClick, onSubmit }) {
           type="email"
           id="login-email-input"
           required
+          onChange={validateObject.handleChange}
         />
-        <span className="popup-with-form__validation-error"></span>
+        <span className="popup-with-form__validation-error">{validateObject.errors["email"]}</span>
       </fieldset>
       <fieldset className="popup-with-form__fieldset">
         <label
@@ -37,12 +38,17 @@ function SigninPopup({ isVisible, onClose, onBottomClick, onSubmit }) {
           type="password"
           id="login-password-input"
           required
+          onChange={validateObject.handleChange}
         />
         <span className="popup-with-form__validation-error">
-          Это обязательное поле
+          {validateObject.errors["password"]}
         </span>
       </fieldset>
-      <button type="submit" className="popup-with-form__submit-button">
+      <button
+        type="submit"
+        className="popup-with-form__submit-button"
+        disabled={!validateObject.isValid}
+      >
         Войти
       </button>
       <span className="popup-with-form__bottom-text">
@@ -50,6 +56,7 @@ function SigninPopup({ isVisible, onClose, onBottomClick, onSubmit }) {
         <button
           className="popup-with-form__bottom-button"
           onClick={onBottomClick}
+          type="button"
         >
           Зарегистрироваться
         </button>

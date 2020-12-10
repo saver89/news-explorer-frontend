@@ -44,6 +44,7 @@ function PopupWithForm(props) {
           onSubmit={props.onSubmit}
           action="/"
           method="GET"
+          noValidate
         >
           <h2
             className={`popup-with-form__title ${

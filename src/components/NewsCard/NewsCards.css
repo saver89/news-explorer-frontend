@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.news-card:hover {
+  cursor: pointer;
+}
+
 .news-card__image-container {
   display: flex;
   justify-content: space-between;
@@ -26,6 +30,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  object-fit: cover;
 }
 
 .news-card__tag {
@@ -75,12 +80,17 @@
   background-image: url('../../images/bookmark-marked.svg');
 }
 
+.news-card__save-button_disabled {
+  background-image: url('../../images/bookmark.svg');
+}
+
 .news-card__button-tooltip {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
   line-height: 12px;
+  color: #000;
   padding: 13px 11px 15px;
   width: 182px;
   visibility: hidden;
@@ -110,6 +120,10 @@
   border: none;
   border-radius: 8px;
   z-index: 1;
+}
+
+.news-card__trash-button:focus {
+  outline: none;
 }
 
 .news-card__trash-button:hover {
